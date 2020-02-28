@@ -1,0 +1,39 @@
+
+# fluor 18 positron emission source
+#/gate/source/addSource                 f18
+#/gate/source/f18/gps/particle          e+
+#/gate/source/f18/gps/energytype        Fluor18
+#/gate/source/f18/setActivity           2 kilobecquerel
+#/gate/source/f18/setForcedUnstableFlag true
+#/gate/source/f18/setForcedHalfLife     6586.2 s
+#/gate/source/f18/gps/angtype           iso
+
+
+# fluor 18 positron emission source
+/gate/source/addSource                 f18
+/gate/source/f18/setType               backtoback
+/gate/source/f18/gps/particle          gamma
+/gate/source/f18/gps/monoenergy        0.511 MeV
+/gate/source/f18/setForcedUnstableFlag true
+/gate/source/f18/setForcedHalfLife     6586.2 s
+/gate/source/f18/gps/angtype           iso
+
+#Glass Capillary in Center
+#/gate/source/f18/gps/type 		Volume
+#/gate/source/f18/gps/shape 		Cylinder
+#/gate/source/f18/gps/radius	 	9.0 cm
+#/gate/source/f18/gps/halfz 		19.0 cm
+#/gate/source/f18/gps/angtype 		iso
+#/gate/source/f18/gps/centre 		0. 0. 0. cm
+
+#Point Source in center
+/gate/source/f18/gps/type 		Point
+/gate/source/f18/gps/radius	 	0.5 mm
+/gate/source/f18/gps/halfz 		0.5 mm
+/gate/source/f18/gps/angtype 		iso
+/gate/source/f18/gps/centre 		0. 0. 0. cm
+#add this in, get off centered
+/gate/source/f18/gps/centre 		10. 0. 0. cm
+
+/gate/source/f18/visualize            cyan
+/gate/source/list
