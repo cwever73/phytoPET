@@ -1,0 +1,35 @@
+
+# Visualisation
+/control/execute phytoPet/visuRDG.mac
+
+# Verbosity
+/control/execute phytoPet/verboseRDG.mac
+
+# Geometry
+/control/execute phytoPet/worldRDG.mac
+/control/execute phytoPet/geoRDG.mac
+#/control/execute phytoPet/ecat_geometry.mac
+/control/execute phytoPet/petDigiRDG.mac
+#/control/execute phytoPet/cylindrical_phantom.mac
+# Physics
+/control/execute phytoPet/physicsRDG.mac
+
+# Output
+/control/execute phytoPet/outputRDG.mac
+
+# Initialisation
+/gate/run/initialize
+
+# Source
+#/control/execute phytoPet/source_f18.mac
+/control/execute phytoPet/source_2gammasRDG.mac
+
+# Random
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+# Start acquisition
+/gate/application/setTimeStart 0 s
+/gate/application/setTimeSlice 1500 s
+/gate/application/setTimeStop  1500 s
+/gate/application/start
