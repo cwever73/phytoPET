@@ -3,12 +3,12 @@
 #/gate/physics/addProcess RadioactiveDecay
 
 # High cut by default
-#/gate/physics/Gamma/SetCutInRegion      world 1 km
-#/gate/physics/Electron/SetCutInRegion   world 1 km
-#/gate/physics/Positron/SetCutInRegion   world 1 km
+/gate/physics/Gamma/SetCutInRegion      world 50 cm
+/gate/physics/Electron/SetCutInRegion   world 50 cm
+/gate/physics/Positron/SetCutInRegion   world 50 cm
 
 # Low cut in the crystal
- /gate/physics/Gamma/SetCutInRegion      crystalUnit 1 mm
- /gate/physics/Electron/SetCutInRegion   crystalUnit 1 mm
- /gate/physics/Positron/SetCutInRegion   crystalUnit 1 mm
+ #/gate/physics/Gamma/SetCutInRegion      crystalUnit 1 mm
+ #/gate/physics/Electron/SetCutInRegion   crystalUnit 1 mm
+ #/gate/physics/Positron/SetCutInRegion   crystalUnit 1 mm
 

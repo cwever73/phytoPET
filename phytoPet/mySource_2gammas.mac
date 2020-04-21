@@ -11,14 +11,25 @@
 
 #/gate/source/twogamma/gps/shape 	Cylinder
 /gate/source/twogamma/gps/type 	Point
-/gate/source/twogamma/gps/radius 	0.5 mm
+/gate/source/twogamma/gps/radius 	0.2 mm
 #/gate/source/twogamma/gps/radius 	5.0 cm #me making source bigger
-/gate/source/twogamma/gps/halfz 	0.5 mm 
+#/gate/source/twogamma/gps/halfz 	0.2 mm 
 #/gate/source/twogamma/gps/halfz 	10  cm #me changing source size
 /gate/source/twogamma/gps/angtype 	iso
 #/gate/source/twogamma/gps/centre 	0. 0. 0. cm
-/gate/source/twogamma/gps/centre 	19.5 0. 0. cm
+#/gate/source/twogamma/gps/centre 	7.5 0. 0. cm
+/gate/source/twogamma/gps/centre 	0.1 2.0 -1.5 cm
 
+
+#/gate/source/twogamma/gps/mintheta      96.089 deg
+#/gate/source/twogamma/gps/maxtheta      83.911  deg
+#/gate/source/twogamma/gps/minphi        -6.089 deg
+#/gate/source/twogamma/gps/maxphi        6.089 deg
+
+#/gate/source/twogamma/gps/mintheta      103 deg
+#/gate/source/twogamma/gps/maxtheta      77.00 deg
+#/gate/source/twogamma/gps/minphi        -13.0 deg
+#/gate/source/twogamma/gps/maxphi        13.0  deg
 /gate/source/twogamma/visualize 	green
 
 /gate/source/list

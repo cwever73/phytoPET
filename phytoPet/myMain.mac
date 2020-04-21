@@ -7,7 +7,8 @@
 
 # Geometry
 /control/execute phytoPet/myWorld.mac
-/control/execute phytoPet/ecat_geometry.mac
+/control/execute phytoPet/rdg_geo.mac
+#/control/execute phytoPet/ecat_geometry.mac
 /control/execute phytoPet/myPet_digitizer.mac
 #/control/execute phytoPet/myCylindrical_phantom.mac
 # Physics
@@ -29,6 +30,6 @@
 
 # Start acquisition
 /gate/application/setTimeStart 0 s
-/gate/application/setTimeSlice 1000 s
-/gate/application/setTimeStop  1000 s
+/gate/application/setTimeSlice 1500 s
+/gate/application/setTimeStop  1500 s
 /gate/application/start

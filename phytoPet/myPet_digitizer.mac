@@ -1,18 +1,19 @@
 
 # The singles
+/gate/digitizer/Singles/insert                        adderCompton
 /gate/digitizer/Singles/insert                        adder
 
 /gate/digitizer/Singles/insert                        readout
-/gate/digitizer/Singles/readout/setDepth              2
+/gate/digitizer/Singles/readout/setDepth              1
 
-#/gate/digitizer/Singles/insert                        blurring
-#/gate/digitizer/Singles/blurring/setResolution        0.26
-#/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+/gate/digitizer/Singles/insert                        blurring
+/gate/digitizer/Singles/blurring/setResolution        0.198
+/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
 
 /gate/digitizer/Singles/insert                        thresholder
-/gate/digitizer/Singles/thresholder/setThreshold      10. keV
+/gate/digitizer/Singles/thresholder/setThreshold      0 keV
 /gate/digitizer/Singles/insert                        upholder
-/gate/digitizer/Singles/upholder/setUphold            1. MeV
+/gate/digitizer/Singles/upholder/setUphold            1 MeV
 
 
 # ATTACHEMENT TO THE SYSTEM 
@@ -36,13 +37,16 @@
 # Define a delay coincidence sorter 
 # To estimate random coincidences
 
-/gate/digitizer/Coincidences/setWindow          100 ns
+/gate/digitizer/Coincidences/setWindow           10 ps
+#/gate/digitizer/Coincidences/MultiplesPolicy    takeAllGoods
+/gate/digitizer/Coincidences/MultiplesPolicy    takeWinnerIfIsGood
 #/gate/digitizer/Coincidences/MultiplesPolicy    takeWinnerOfGoods
 
-/gate/digitizer/name                            delay
-/gate/digitizer/insert                          coincidenceSorter
-/gate/digitizer/delay/setWindow                 10 ns
-/gate/digitizer/delay/setOffset                 500 ns
-/gate/digitizer/delay/MultiplesPolicy           takeWinnerOfGoods
+#/gate/digitizer/name                            delay
+#/gate/digitizer/insert                          coincidenceSorter
+#/gate/digitizer/delay/setWindow                 5 ns
+#/gate/digitizer/delay/setOffset                 0.001 ns
+#/gate/digitizer/delay/MultiplesPolicy           takeWinnerIfIsGood
+#/gate/digitizer/delay/MultiplesPolicy           takeWinnerOfGoods
 
 

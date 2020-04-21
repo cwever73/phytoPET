@@ -9,17 +9,19 @@
 /gate/ecat/setMaterial                Air
 /gate/ecat/vis/forceWireframe
 /gate/ecat/vis/setColor               red
+#/gate/ecat/vis/setVisible               0
 
 #	Block
 /gate/ecat/daughters/name                     blockDetector
 /gate/ecat/daughters/insert                   box
 /gate/blockDetector/placement/setTranslation  15 0 0 cm
 /gate/blockDetector/geometry/setXLength       1 cm
-/gate/blockDetector/geometry/setYLength       4.8 cm # 12*4mm for crystal + 11*0.5 for gaps
-/gate/blockDetector/geometry/setZLength       4.8 cm
+/gate/blockDetector/geometry/setYLength       4.4 cm # 12*4mm for crystal + 11*0.5 for gaps
+/gate/blockDetector/geometry/setZLength       4.4 cm
 /gate/blockDetector/setMaterial               Air
 /gate/ecat/vis/forceWireframe
 /gate/blockDetector/vis/setColor              green
+#/gate/blockDetector/vis/setVisible            0
 
 #	Crystal
 /gate/blockDetector/daughters/name             crystalUnit
@@ -30,7 +32,7 @@
 /gate/crystalUnit/geometry/setZLength          0.925 mm
 /gate/crystalUnit/setMaterial                  LYSO
 /gate/crystalUnit/vis/setColor                 yellow
-#/gate/crystalUnit/vis/setVisible              0
+#/gate/crystalUnit/vis/setVisible               0
 
 
 #Fix from here down for initial setup/protoype
@@ -38,7 +40,7 @@
 # Block: ring(x46) & linear(x4)
 # Crystal: cubicArray(12x12)
 /gate/blockDetector/repeaters/insert                  ring
-/gate/blockDetector/ring/setRepeatNumber              4
+/gate/blockDetector/ring/setRepeatNumber              12
 #/gate/blockDetector/ring/setFirstAngle                0 deg
 #/gate/blockDetector/ring/setAngularSpan               180 deg
 #/gate/blockDetector/ring/enableAutoRotation
@@ -46,8 +48,8 @@
 
 /gate/crystalUnit/repeaters/insert                    cubicArray
 /gate/crystalUnit/cubicArray/setRepeatNumberX         1
-/gate/crystalUnit/cubicArray/setRepeatNumberY         48
-/gate/crystalUnit/cubicArray/setRepeatNumberZ         48
+/gate/crystalUnit/cubicArray/setRepeatNumberY         44
+/gate/crystalUnit/cubicArray/setRepeatNumberZ         44
 /gate/crystalUnit/cubicArray/setRepeatVector          10.0 0.925 0.925 mm
 
 # Attach the volumes to the system tree
