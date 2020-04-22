@@ -6,21 +6,17 @@
 /control/execute mac/verbose.mac
 
 # Geometry
-#/control/execute mac/world.mac
-/control/execute mac/myWorld.mac
-#/control/execute mac/pet_head.mac 
-/control/execute mac/ecat_geometry.mac
-#/control/execute mac/stackedEcat_geo.mac
+/control/execute mac/world.mac
+/control/execute mac/pet_head.mac 
+#/control/execute mac/ecat_geometry.mac
 #/control/execute mac/pet_digitizer.mac
-/control/execute mac/myPet_digitizer.mac
+/control/execute mac/trialCoincPetDigi.mac
 #/control/execute mac/cylindrical_phantom.mac
-#/control/execute mac/myCylindrical_phantom.mac
 # Physics
 /control/execute mac/physics.mac
 
 # Output
-#/control/execute mac/output.mac 
-/control/execute mac/myOutput.mac
+/control/execute mac/output.mac 
 
 # Initialisation
 /gate/run/initialize
@@ -36,6 +32,6 @@
 
 # Start acquisition
 /gate/application/setTimeStart 0 s
-/gate/application/setTimeSlice 2020 s
-/gate/application/setTimeStop  2020 s
+/gate/application/setTimeSlice 100 s
+/gate/application/setTimeStop  100 s
 /gate/application/start

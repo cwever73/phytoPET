@@ -1,6 +1,6 @@
 
-#/gate/physics/addPhysicsList emstandard_opt1
-/gate/physics/addProcess RadioactiveDecay
+/gate/physics/addPhysicsList emstandard_opt1
+#/gate/physics/addProcess RadioactiveDecay
 
 # High cut by default
 #/gate/physics/Gamma/SetCutInRegion      world 1 km

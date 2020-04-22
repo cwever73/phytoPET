@@ -10,9 +10,9 @@
 /gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
 
 /gate/digitizer/Singles/insert                        thresholder
-/gate/digitizer/Singles/thresholder/setThreshold      350. keV
+/gate/digitizer/Singles/thresholder/setThreshold      10. keV
 /gate/digitizer/Singles/insert                        upholder
-/gate/digitizer/Singles/upholder/setUphold            650. keV
+/gate/digitizer/Singles/upholder/setUphold            1. MeV
 
 
 # ATTACHEMENT TO THE SYSTEM 
@@ -37,12 +37,14 @@
 # To estimate random coincidences
 
 /gate/digitizer/Coincidences/setWindow          10 ns
-/gate/digitizer/Coincidences/MultiplesPolicy    takeWinnerOfGoods
+#/gate/digitizer/Coincidences/MultiplesPolicy    takeWinnerOfGoods
+/gate/digitizer/Coincidences/MultiplesPolicy    takeWinnerIfIsGood
 
-/gate/digitizer/name                            delay
-/gate/digitizer/insert                          coincidenceSorter
-/gate/digitizer/delay/setWindow                 10 ns
-/gate/digitizer/delay/setOffset                 500 ns
-/gate/digitizer/delay/MultiplesPolicy           takeWinnerOfGoods
+#/gate/digitizer/name                            delay
+#/gate/digitizer/insert                          coincidenceSorter
+#/gate/digitizer/delay/setWindow                 10 ns
+#/gate/digitizer/delay/setOffset                 5 ns
+##/gate/digitizer/delay/MultiplesPolicy           takeWinnerOfGoods
+#/gate/digitizer/delay/MultiplesPolicy           takeWinnerIfIsGood
 
 
