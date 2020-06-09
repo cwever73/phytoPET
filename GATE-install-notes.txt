@@ -1,0 +1,121 @@
+#########################################################
+## GATE testing
+#########################################################
+source $HOME/GATE/gate-setup.csh
+
+cd /home/cmwever/GATE/Gate-8.2/benchmarks/benchPET
+cp benchPET.mac test.mac
+
+/vis/open OGLIQt
+/control/execute test.mac
+
+
+#########################################################
+## The instructions below should only be done once.  Then just use the
+## 'source $HOME/GATE/gate-setup.csh' to set things up.
+#########################################################
+
+# Setup a newer compiler using /site install
+source `use $PID gcc/8.1.0`
+
+## Build G4
+mkdir Geant4
+cd !$
+tar xvfz geant4.10.05.p01.tar.gz
+mkdir geant4.10.05.p01-build
+mkdir geant4.10.05.p01-install
+
+cd geant4.10.05.p01-build
+#cmake -DCMAKE_INSTALL_PREFIX=/home/cmwever/Geant4/geant4.10.05.p01-install \
+#      -DGEANT4_INSTALL_DATA=ON  \
+#    ../geant4.10.05.p01/
+
+ccmake -DOpenGL_GL_PREFERENCE=GLVND ../geant4.10.05.p01
+  --------------------
+  CMAKE_BUILD_TYPE                 Release
+* CMAKE_INSTALL_PREFIX             /home/cmwever/Geant4/geant4.10.05.p01-install
+  GEANT4_BUILD_MULTITHREADED	  OFF
+* GEANT4_INSTALL_DATA              ON
+  GEANT4_INSTALL_DATADIR
+  GEANT4_USE_G3TOG4                OFF
+  GEANT4_USE_GDML                  OFF
+  GEANT4_USE_INVENTOR              OFF
+* GEANT4_USE_OPENGL_X11            ON
+* GEANT4_USE_QT                    ON
+* GEANT4_USE_RAYTRACER_X11         ON
+  GEANT4_USE_SYSTEM_CLHEP          OFF
+  GEANT4_USE_SYSTEM_EXPAT          ON
+  GEANT4_USE_SYSTEM_ZLIB           OFF
+  GEANT4_USE_XM                    OFF
+  Qt5Core_DIR                      /usr/lib64/cmake/Qt5Core
+  Qt5Gui_DIR                       /usr/lib64/cmake/Qt5Gui
+  Qt5OpenGL_DIR                    /usr/lib64/cmake/Qt5OpenGL
+  Qt5PrintSupport_DIR              /usr/lib64/cmake/Qt5PrintSupport
+  Qt5Widgets_DIR                   /usr/lib64/cmake/Qt5Widgets
+  --------------------
+make -j8
+make install
+
+source ~/Geant4/geant4.10.05.p01-install/bin/geant4.csh
+
+## Install libtorch  (NOT USED)
+https://pytorch.org/get-started/locally/
+cd GATE
+wget ...
+
+setenv Torch_DIR          /home/cmwever/GATE/libtorch-1.2.0/share/cmake/Torch
+setenv CUDNN_INCLUDE_DIR  /home/cmwever/GATE/cuda/include
+setenv CUDNN_LIBRARY      /home/cmwever/GATE/cuda/lib64/libcudnn.so
+
+## Install ecat7
+http://www.opengatecollaboration.org/ECAT
+wget http://www.opengatecollaboration.org/sites/default/files/ecat.tar.gz
+tar xvfz ecat.tar.gz
+cp Makefile.unix Makefile
+make
+mkdir include
+cp *.h include/ -v
+ls lib
+mkdir lib
+cp libecat.a lib/
+
+
+## Install GATE v8.2
+mkdir GATE
+cd GATE
+
+wget https://github.com/OpenGATE/Gate/archive/v8.2.tar.gz
+tar xvfz v8.2.tar.gz
+
+mkdir gate_v8.2-build
+mkdir gate_v8.2-install
+
+ccmake ../Gate_v8.2
+  ------
+  BUILD_TESTING                    ON
+  CMAKE_BACKWARDS_COMPATIBILITY    2.4
+  CMAKE_BUILD_TYPE                 Release
+  CMAKE_INSTALL_PREFIX             /home/cmwever/GATE/gate_v8.2-install
+  ECAT7_HOME                       /home/cmwever/GATE/ecat7
+  EXECUTABLE_OUTPUT_PATH
+  GATE_DOWNLOAD_BENCHMARKS_DATA    ON
+  GATE_USE_DAVIS                   OFF
+  GATE_USE_ECAT7                   ON
+  GATE_USE_GEANT4_UIVIS            ON
+  GATE_USE_GPU                     OFF
+  GATE_USE_ITK                     ON
+  GATE_USE_LMF			  OFF
+  GATE_USE_OPTICAL                 ON
+  GATE_USE_RTK                     OFF
+  GATE_USE_SYSTEM_CLHEP            OFF
+  GATE_USE_XRAYLIB                 OFF
+  Geant4_DIR                       /home/cmwever/Geant4/geant4.10.05.p01-install/lib64/Geant4-10.5.1
+  ITK_DIR                          /usr/local/lib/cmake/ITK-5.0
+  LIBRARY_OUTPUT_PATH
+  ROOTCINT_EXECUTABLE              /usr/bin/rootcint
+  ------
+
+make -j8
+make install
+
+setenv PATH /home/cmwever/GATE/gate_v8.2-install/bin:${PATH}
